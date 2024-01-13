@@ -1,24 +1,21 @@
-import { useState } from "react";
-
 import "./App.css";
-import { Button } from "react-bootstrap";
-import { BsAmd } from "react-icons/bs";
-import { Bs5SquareFill } from "react-icons/bs";
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import SignUp from "./pages/SignUp";
-import SignIn from "./pages/SignIn";
+import SignUp from "./pages/sign-in-up/SignUp";
+import SignIn from "./pages/sign-in-up/SignIn";
+import VerifyEmail from "./pages/sign-in-up/VerifyEmail";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <div>
       <Routes>
-        <Route path="/" element={<SignIn />}></Route>
-        <Route path="/sign-up" element={<SignUp />}></Route>
-      </Routes>
+        {/* public route  */}
+        <Route path="/" element={<SignIn />} />
+        <Route path="/verify-email" element={<VerifyEmail />} />
 
+        {/* private route  */}
+        <Route path="/admin-sign-up" element={<SignUp />} />
+      </Routes>
       <ToastContainer />
     </div>
   );
