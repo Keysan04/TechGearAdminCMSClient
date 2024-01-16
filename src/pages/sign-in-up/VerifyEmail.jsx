@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { Alert, Spinner } from "react-bootstrap";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { postVerifyEmail } from "../../helpers/axiosHelper";
 
 //x. show spinner
@@ -44,6 +44,8 @@ const VerifyEmail = () => {
           {resp.message}
         </Alert>
       )}
+
+      {resp.status === "success" && <a href="/">Login Now</a>}
     </div>
   );
 };
