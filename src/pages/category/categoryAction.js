@@ -1,5 +1,9 @@
 import { toast } from "react-toastify";
-import { fetchCategories, postCategory } from "../../helpers/axiosHelper";
+import {
+  fetchCategories,
+  postCategory,
+  updateCategory,
+} from "../../helpers/axiosHelper";
 import { setCatList } from "./categorySlice";
 
 export const getAllCats = () => async (dispatch) => {
@@ -11,6 +15,16 @@ export const getAllCats = () => async (dispatch) => {
 
 export const postNewCat = (obj) => async (dispatch) => {
   const pending = postCategory(obj);
+  toast.promise(pending, {
+    pending: "please wait...",
+  });
+
+  const { status, message } = await pending;
+  toast[status](message);
+  status === "success" && dispatch(getAllCats());
+};
+export const updateCat = (obj) => async (dispatch) => {
+  const pending = updateCategory(obj);
   toast.promise(pending, {
     pending: "please wait...",
   });

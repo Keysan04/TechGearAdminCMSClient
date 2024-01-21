@@ -5,19 +5,24 @@ import { postSignIn } from "../../helpers/axiosHelper";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { autoLogin, getUserProfile } from "../profile/userAction";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const SignIn = () => {
   const emailRef = useRef("");
   const passwordRef = useRef("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const { admin } = useSelector((state) => state.adminInfo);
-
+  const fromLocation =
+    location?.state?.from?.location?.pathname || "/dashboard";
+  console.log(location);
+  console.log(fromLocation);
   useEffect(() => {
+    console.log("location check");
     // check if user in redux store, if so, redirect to dashboard
-    admin?._id && navigate("/dashboard");
+    admin?._id && navigate(fromLocation);
     dispatch(autoLogin());
   }, [admin?._id, navigate]);
 

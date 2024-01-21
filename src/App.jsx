@@ -17,6 +17,7 @@ import ResetPassword from "./pages/sign-in-up/ResetPassword";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getAllCats } from "./pages/category/categoryAction";
+import RandomUserList from "./pages/randomUser/RandomUserList";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ function App() {
         <Route path="/" element={<SignIn />} />
         <Route path="/verify-email" element={<VerifyEmail />} />
         <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/random-user" element={<RandomUserList />} />
 
         {/* private route  */}
         <Route

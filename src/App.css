@@ -33,3 +33,16 @@
   padding: 1rem;
   border-radius: 10px;
 }
+
+.panel {
+  background: rgba(147, 220, 162, 0.568);
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-weight: bolder;
+  color: white;
+}

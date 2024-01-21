@@ -3,6 +3,7 @@ import axios from "axios";
 const rootAPI = import.meta.env.VITE_ROOT_API;
 const userAPI = rootAPI + "/users";
 const catAPI = rootAPI + "/categories";
+const randomAPI = "https://randomuser.me/api/?results=20";
 
 const getAccessJWT = () => {
   return sessionStorage.getItem("accessJWT");
@@ -40,6 +41,13 @@ const apiProcessor = async ({ method, url, data, isPrivate, refreshToken }) => {
   }
 };
 
+//=======random user api
+
+export const getRandomUsers = async () => {
+  const { data } = await axios.get(randomAPI);
+  return data;
+};
+
 // ============ user api
 
 // create user
@@ -68,6 +76,15 @@ export const fetchAUser = () => {
   return apiProcessor({
     method: "get",
     url: userAPI,
+    isPrivate: true,
+  });
+};
+export const updateUser = (data) => {
+  console.log(data._id);
+  return apiProcessor({
+    method: "put",
+    url: userAPI + "/update",
+    data,
     isPrivate: true,
   });
 };
@@ -137,5 +154,17 @@ export const postCategory = (data) => {
     url: catAPI,
     isPrivate: true,
     data,
+  });
+};
+
+//update Category
+
+export const updateCategory = (data) => {
+  console.log(data);
+  return apiProcessor({
+    method: "put",
+    url: catAPI,
+    data,
+    isPrivate: true,
   });
 };

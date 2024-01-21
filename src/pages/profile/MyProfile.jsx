@@ -1,20 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { AdminLayout } from "../../components/layout/AdminLayout";
 import { UpdatePasswordFrm } from "../../components/admin-profile/UpdatePasswordFrm";
+import UpdateUserProfile from "../../components/admin-profile/UpdateUserProfile";
 
 const MyProfile = () => {
+  const [showForm, setShowForm] = useState(true);
+
   return (
     <AdminLayout title="My Profile">
       <div>
-        <h3>Update User Profile</h3>
+        <UpdateUserProfile />
         <hr />
       </div>
-
-      <div className="mt-5">
-        <h3>Update User Password</h3>
-        <hr />
-        <UpdatePasswordFrm />
-      </div>
+      {showForm === true && (
+        <div className="mt-5">
+          <h3>Update User Password</h3>
+          <hr />
+          <UpdatePasswordFrm />
+        </div>
+      )}
     </AdminLayout>
   );
 };

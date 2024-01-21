@@ -9,11 +9,6 @@ export const PrivateRoute = ({ children }) => {
   return admin?.role === "admin" ? (
     children
   ) : (
-    <Navigate
-      to="/"
-      state={{
-        from: { location },
-      }}
-    />
+    <Navigate to="/" state={{ from: { location } }} />
   );
 };

@@ -12,8 +12,9 @@ import { FaUsers, FaUserSecret } from "react-icons/fa";
 export const Sidebar = () => {
   return (
     <div className="side-bar bg-dark text-light p-3">
-      <p className="mt-3 text-center">Admin Panel</p>
-
+      <div className="panel">
+        <p className="mt-3 text-center">Admin Panel</p>
+      </div>
       <hr />
       <nav>
         <ul className="list-unstyled sid-nav">
